@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>快火箭-销售模式</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <link rel="stylesheet" href="css/base.css?v={$version}"/>
+  <link rel="stylesheet" href="css/dialog.css?v={$version}"/>
+</head>
+
+<body>
+<div id="dialog" style="display:none;"></div>
+<style type="text/css">
+  .btn {
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:120px;
+    height:30px;
+    color:#333;
+    text-align:center;
+    line-height:30px;
+    margin:-15 0 0 -60px;
+    border:1px solid #e5e5e5;
+    background-color:#f5f5f5;
+    cursor:pointer;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  .btn:hover{
+    color:#fff;
+    border:1px solid #e5e5e5;
+    background-color:#2b335c;
+  }
+</style>
+<div class="btn">打开弹框</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+
+<script type="text/javascript">
+  var dialog = $("#dialog").dialog({
+    title:"打开jQuery.dialog弹框",
+    width:600,
+    height:400,
+    buttons: [
+      {
+        text:"关闭",
+        click:function() {
+          $(this).dialog("close");
+        }
+      },
+      {
+        text:"确定",
+        click:function() {
+          $(this).dialog("close");
+        }
+      }
+    ]
+  });
+
+  $(".btn").click(function(){
+    dialog.dialog("open");
+  });
+</script>
+
+</body>
+</html>
