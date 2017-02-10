@@ -4570,6 +4570,10 @@ var dialog = $.widget( "ui.dialog", {
 	_createTitlebar: function() {
 		var uiDialogTitle;
 
+		if (!this.options.title) {
+			return;
+		}
+
 		this.uiDialogTitlebar = $( "<div>" )
 			.addClass( "ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" )
 			.prependTo( this.uiDialog );
@@ -4665,9 +4669,16 @@ var dialog = $.widget( "ui.dialog", {
 			};
 			delete props.icons;
 			delete props.showText;
-			$( "<button></button>", props )
+			if ( props.className && typeof props.className  == 'string' ) {
+				$( "<div></div>", props )
+				.appendTo( that.uiButtonSet ).addClass(props.className);
+
+			} else {
+				$( "<button></button>", props )
 				.button( buttonOptions )
 				.appendTo( that.uiButtonSet );
+
+			}
 		});
 		this.uiDialog.addClass( "ui-dialog-buttons" );
 		this.uiDialogButtonPane.appendTo( this.uiDialog );
